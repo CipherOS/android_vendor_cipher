@@ -84,6 +84,8 @@ PRODUCT_COPY_FILES += \
 # Enforce privapp-permissions whitelist
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.control_privapp_permissions=enforce
+# Fonts
+include vendor/cipher/config/fonts.mk
 
 # Include AOSP audio files
 include vendor/cipher/config/aosp_audio.mk
