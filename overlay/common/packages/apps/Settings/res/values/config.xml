@@ -36,4 +36,16 @@
     <string name="config_styles_and_wallpaper_picker_class" translatable="false">com.android.customization.picker.CustomizationPickerActivity</string>
     <!-- Action name for the styles & wallpaper picker activity. -->
     <string name="config_styles_and_wallpaper_picker_action" translatable="false">android.intent.action.SET_WALLPAPER</string>
+
+    <!-- Whether to show the "glanceable hub" settings on mobile. -->
+    <bool name="config_show_glanceable_hub_toggle_setting_mobile">true</bool>
+
+    <!-- Whether or not device header widget tile should display in device info page -->
+    <bool name="config_show_device_header_in_device_info">false</bool>
+
+    <!-- Whether to display Cloned Apps page in Settings (Settings > Apps > Cloned Apps).-->
+    <bool name="config_cloned_apps_page_enabled">true</bool>
+
+    <!-- Whether memory from app_info_settings is available or not. -->
+    <bool name="config_show_app_info_settings_memory">true</bool>
 </resources>
