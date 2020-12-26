@@ -1,7 +1,7 @@
 # Allow vendor/extra to override any property by setting it first
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 
-PRODUCT_BRAND ?= LineageOS
+PRODUCT_BRAND ?= CipherOS
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
@@ -109,8 +109,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     LineageParts \
     LineageSettingsProvider \
-    LineageSetupWizard \
-    Updater
+    LineageSetupWizard
 
 # Themes
 PRODUCT_PACKAGES += \
@@ -188,123 +187,40 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/lineage/overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/lineage/overlay/common
 
-PRODUCT_VERSION_MAJOR = 18
-PRODUCT_VERSION_MINOR = 1
-PRODUCT_VERSION_MAINTENANCE := 0
+PRODUCT_VERSION_MAJOR = 1.0
+PRODUCT_VERSION_MINOR = R
+CIPHER_BUILD := UNOFFICIAL-ALPHA
+CIPHER_BUILD_ZIP_TYPE := VANILLA
 
-ifeq ($(TARGET_VENDOR_SHOW_MAINTENANCE_VERSION),true)
-    LINEAGE_VERSION_MAINTENANCE := $(PRODUCT_VERSION_MAINTENANCE)
-else
-    LINEAGE_VERSION_MAINTENANCE := 0
+# Define Official & Unofficial Builds
+ifeq ($(CIPHER_OFFICIAL), true)
+    CIPHER_BUILD := OFFICIAL-ALPHA
+    PRODUCT_PACKAGES += \
+    Updater
 endif
 
-# Set LINEAGE_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
+#Gapps
+#ifeq ($(CIPHER_GAPPS), true)
+#￼   $(call inherit-product, vendor/gapps/config.mk)
+#￼   CIPHER_BUILD_ZIP_TYPE := GAPPS
+#endif
 
-ifndef LINEAGE_BUILDTYPE
-    ifdef RELEASE_TYPE
-        # Starting with "LINEAGE_" is optional
-        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^LINEAGE_||g')
-        LINEAGE_BUILDTYPE := $(RELEASE_TYPE)
-    endif
+
+# Add Face Unlock for Cipher
+TARGET_FACE_UNLOCK_SUPPORTED := false
+ifneq ($(TARGET_DISABLE_ALTERNATIVE_FACE_UNLOCK), true)
+PRODUCT_PACKAGES += \
+    FaceUnlockService
+TARGET_FACE_UNLOCK_SUPPORTED := true
 endif
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.face.moto_unlock_service=$(TARGET_FACE_UNLOCK_SUPPORTED)
 
-# Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
-    LINEAGE_BUILDTYPE :=
-endif
+# Add CipherOS Stuff 
+LINEAGE_VERSION := CipherOS-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date +%Y%m%d-%H%M)-$(LINEAGE_BUILD)-$(CIPHER_BUILD)
+LINEAGE_DISPLAY_VERSION := CipherOS-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(LINEAGE_BUILD)-$(CIPHER_BUILD)
+CIPHER_VERSION := $(LINEAGE_VERSION)
 
-ifdef LINEAGE_BUILDTYPE
-    ifneq ($(LINEAGE_BUILDTYPE), SNAPSHOT)
-        ifdef LINEAGE_EXTRAVERSION
-            # Force build type to EXPERIMENTAL
-            LINEAGE_BUILDTYPE := EXPERIMENTAL
-            # Remove leading dash from LINEAGE_EXTRAVERSION
-            LINEAGE_EXTRAVERSION := $(shell echo $(LINEAGE_EXTRAVERSION) | sed 's/-//')
-            # Add leading dash to LINEAGE_EXTRAVERSION
-            LINEAGE_EXTRAVERSION := -$(LINEAGE_EXTRAVERSION)
-        endif
-    else
-        ifndef LINEAGE_EXTRAVERSION
-            # Force build type to EXPERIMENTAL, SNAPSHOT mandates a tag
-            LINEAGE_BUILDTYPE := EXPERIMENTAL
-        else
-            # Remove leading dash from LINEAGE_EXTRAVERSION
-            LINEAGE_EXTRAVERSION := $(shell echo $(LINEAGE_EXTRAVERSION) | sed 's/-//')
-            # Add leading dash to LINEAGE_EXTRAVERSION
-            LINEAGE_EXTRAVERSION := -$(LINEAGE_EXTRAVERSION)
-        endif
-    endif
-else
-    # If LINEAGE_BUILDTYPE is not defined, set to UNOFFICIAL
-    LINEAGE_BUILDTYPE := UNOFFICIAL
-    LINEAGE_EXTRAVERSION :=
-endif
-
-ifeq ($(LINEAGE_BUILDTYPE), UNOFFICIAL)
-    ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-        LINEAGE_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
-    endif
-endif
-
-ifeq ($(LINEAGE_BUILDTYPE), RELEASE)
-    ifndef TARGET_VENDOR_RELEASE_BUILD_ID
-        LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(LINEAGE_BUILD)
-    else
-        ifeq ($(TARGET_BUILD_VARIANT),user)
-            ifeq ($(LINEAGE_VERSION_MAINTENANCE),0)
-                LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(LINEAGE_BUILD)
-            else
-                LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(LINEAGE_VERSION_MAINTENANCE)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(LINEAGE_BUILD)
-            endif
-        else
-            LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(LINEAGE_BUILD)
-        endif
-    endif
-else
-    ifeq ($(LINEAGE_VERSION_MAINTENANCE),0)
-        ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
-            LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d_%H%M%S)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
-        else
-            LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
-        endif
-    else
-        ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
-            LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(LINEAGE_VERSION_MAINTENANCE)-$(shell date -u +%Y%m%d_%H%M%S)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
-        else
-            LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(LINEAGE_VERSION_MAINTENANCE)-$(shell date -u +%Y%m%d)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
-        endif
-    endif
-endif
-
-PRODUCT_EXTRA_RECOVERY_KEYS += \
-    vendor/lineage/build/target/product/security/lineage
-
--include vendor/lineage-priv/keys/keys.mk
-
-LINEAGE_DISPLAY_VERSION := $(LINEAGE_VERSION)
-
-ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),)
-ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),build/target/product/security/testkey)
-    ifneq ($(LINEAGE_BUILDTYPE), UNOFFICIAL)
-        ifndef TARGET_VENDOR_RELEASE_BUILD_ID
-            ifneq ($(LINEAGE_EXTRAVERSION),)
-                # Remove leading dash from LINEAGE_EXTRAVERSION
-                LINEAGE_EXTRAVERSION := $(shell echo $(LINEAGE_EXTRAVERSION) | sed 's/-//')
-                TARGET_VENDOR_RELEASE_BUILD_ID := $(LINEAGE_EXTRAVERSION)
-            else
-                TARGET_VENDOR_RELEASE_BUILD_ID := $(shell date -u +%Y%m%d)
-            endif
-        else
-            TARGET_VENDOR_RELEASE_BUILD_ID := $(TARGET_VENDOR_RELEASE_BUILD_ID)
-        endif
-        ifeq ($(LINEAGE_VERSION_MAINTENANCE),0)
-            LINEAGE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(LINEAGE_BUILD)
-        else
-            LINEAGE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(LINEAGE_VERSION_MAINTENANCE)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(LINEAGE_BUILD)
-        endif
-    endif
-endif
-endif
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/lineage/config/partner_gms.mk
