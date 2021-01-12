@@ -1,6 +1,5 @@
 # Copyright (C) 2017 Unlegacy-Android
 # Copyright (C) 2017,2020 The LineageOS Project
-# Copyright (C) 2020 Cipher OS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,5 +25,5 @@ bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(LINEAGE_TARGET_PACKAGE)
 	$(hide) $(MD5) $(LINEAGE_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(LINEAGE_TARGET_PACKAGE).md5sum
 	@echo "Package Complete: $(LINEAGE_TARGET_PACKAGE)" >&2
-        @echo "Cipher OS is Here .." >&2
-        $(hide) ./vendor/lineage/build/tools/cipher.sh
+	@echo "Build is getting done..." >&2
+	$(hide) ./vendor/lineage/build/tools/cipher.sh
