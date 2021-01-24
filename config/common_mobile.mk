@@ -19,7 +19,8 @@ PRODUCT_PACKAGES += \
     Etar \
     Jelly \
     Profiles \
-    Seedvault
+    Seedvault \
+    OmniStyle
 
 ifneq ($(TARGET_EXCLUDES_AUDIOFX),true)
 PRODUCT_PACKAGES += \
