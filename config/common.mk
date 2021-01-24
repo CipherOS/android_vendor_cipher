@@ -139,6 +139,10 @@ PRODUCT_PACKAGES += \
     wget \
     zip
 
+# System fonts
+    vendor/lineage/prebuilt/fonts/SlateOP/SlateFromOP-Light.ttf:$(TARGET_COPY_OUT_SYSTEM)/fonts/SlateFromOP-Light.ttf \
+    vendor/lineage/prebuilt/fonts/SlateOP/SlateFromOP-Regular.ttf:$(TARGET_COPY_OUT_SYSTEM)/fonts/SlateFromOP-Regular.ttf
+
 # Filesystems tools
 PRODUCT_PACKAGES += \
     fsck.exfat \
