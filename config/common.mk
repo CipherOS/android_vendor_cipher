@@ -196,23 +196,23 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/lineage/overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/lineage/overlay/common
 
-PRODUCT_VERSION_MAJOR = 1.0
-PRODUCT_VERSION_MINOR = INFERNO
-CIPHER_BUILD := UNOFFICIAL-BETA
+PRODUCT_VERSION_MAJOR = 1.5
+PRODUCT_VERSION_MINOR = CRYPTO
+CIPHER_BUILD := UNOFFICIAL-STABLE
 CIPHER_BUILD_ZIP_TYPE := VANILLA
 
 # Define Official & Unofficial Builds
 ifeq ($(CIPHER_OFFICIAL), true)
-    CIPHER_BUILD := OFFICIAL-BETA
+    CIPHER_BUILD := OFFICIAL-STABLE
     PRODUCT_PACKAGES += \
     Updater
 endif
 
-#Gapps
-#ifeq ($(CIPHER_GAPPS), true)
-#￼   $(call inherit-product, vendor/gapps/config.mk)
-#￼   CIPHER_BUILD_ZIP_TYPE := GAPPS
-#endif
+# Gapps
+ifeq ($(CIPHER_GAPPS), true)
+    $(call inherit-product, vendor/gapps/config.mk)
+    CIPHER_BUILD_ZIP_TYPE := GAPPS
+endif
 
 
 # Add Face Unlock for Cipher
