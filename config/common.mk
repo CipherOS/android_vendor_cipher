@@ -210,7 +210,7 @@ endif
 
 # Gapps
 ifeq ($(CIPHER_GAPPS), true)
-    $(call inherit-product, vendor/gapps/config.mk)
+    $(call inherit-product, vendor/gapps/common/common-vendor.mk)
     CIPHER_BUILD_ZIP_TYPE := GAPPS
 endif
 
