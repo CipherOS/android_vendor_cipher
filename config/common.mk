@@ -21,6 +21,11 @@ else
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
 endif
 
+# Test Build Tag
+ifeq ($(CIPHER_TEST),true)
+    CIPHER_BUILD := DEVELOPER
+endif
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/lineage/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
