@@ -21,6 +21,11 @@ else
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
 endif
 
+# Test Build Tag
+ifeq ($(CIPHER_TEST),true)
+    CIPHER_BUILD := DEVELOPER
+endif
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/lineage/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
@@ -228,10 +233,16 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.face.moto_unlock_service=$(TARGET_FACE_UNLOCK_SUPPORTED)
 
 # Add CipherOS Stuff 
-LINEAGE_VERSION := CipherOS-$(PRODUCT_VERSION_MAJOR)-$(PRODUCT_VERSION_MINOR)-$(shell date +%Y%m%d-%H%M)-$(LINEAGE_BUILD)-$(CIPHER_BUILD)
-LINEAGE_DISPLAY_VERSION := CipherOS-$(PRODUCT_VERSION_MAJOR)-$(PRODUCT_VERSION_MINOR)-$(LINEAGE_BUILD)-$(CIPHER_BUILD)
+LINEAGE_VERSION := CipherOS-$(PRODUCT_VERSION_MAJOR)-$(PRODUCT_VERSION_MINOR)-$(shell date +%Y%m%d-%H%M)-$(LINEAGE_BUILD)-$(CIPHER_BUILD)-$(CIPHER_BUILD_ZIP_TYPE)
+LINEAGE_DISPLAY_VERSION := CipherOS-$(PRODUCT_VERSION_MAJOR)-$(PRODUCT_VERSION_MINOR)-$(LINEAGE_BUILD)-$(CIPHER_BUILD)-$(CIPHER_BUILD_ZIP_TYPE)
 CIPHER_VERSION := $(LINEAGE_VERSION)
 
+# Blur
+ifeq ($(TARGET_USES_BLUR), true)
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.sf.blurs_are_expensive=1 \
+    ro.surface_flinger.supports_background_blur=1
+endif
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/lineage/config/partner_gms.mk
