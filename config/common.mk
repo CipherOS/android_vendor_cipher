@@ -218,7 +218,8 @@ CIPHER_BUILD_ZIP_TYPE := VANILLA
 ifeq ($(CIPHER_OFFICIAL), true)
     CIPHER_BUILD := OFFICIAL
     PRODUCT_PACKAGES += \
-    Updater
+    Updater \
+    CipherShades
 endif
 
 # Gapps
