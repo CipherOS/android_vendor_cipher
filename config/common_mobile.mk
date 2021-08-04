@@ -54,6 +54,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
+ifneq ($(CIPHER_CHARGER),false)
+PRODUCT_PACKAGES += \
+    cipher_charger_animation
+endif
+
 # Customizations
 PRODUCT_PACKAGES += \
     IconShapeSquareOverlay \
