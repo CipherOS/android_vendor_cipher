@@ -157,9 +157,9 @@ PRODUCT_PACKAGES += \
     zip
 
 # System fonts
- #   vendor/lineage/prebuilt/fonts/Samsung/SamsungOne.ttf:$(TARGET_COPY_OUT_SYSTEM)/fonts/SamsungOne.ttf \
-    vendor/cipher/prebuilt/fonts/SlateOP/SlateFromOP-Light.ttf:$(TARGET_COPY_OUT_SYSTEM)/fonts/SlateFromOP-Light.ttf \
-    vendor/cipher/prebuilt/fonts/SlateOP/SlateFromOP-Regular.ttf:$(TARGET_COPY_OUT_SYSTEM)/fonts/SlateFromOP-Regular.ttf
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,vendor/cipher/prebuilt/fonts/ttf,$(TARGET_COPY_OUT_PRODUCT)/fonts) \
+    vendor/cipher/prebuilt/fonts/fonts_customization.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/fonts_customization.xml
 
 # Filesystems tools
 PRODUCT_PACKAGES += \
