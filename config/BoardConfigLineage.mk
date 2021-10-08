@@ -1,7 +1,7 @@
-include vendor/lineage/config/BoardConfigKernel.mk
+include vendor/cipher/config/BoardConfigKernel.mk
 
 ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
-include vendor/lineage/config/BoardConfigQcom.mk
+include vendor/cipher/config/BoardConfigQcom.mk
 endif
 
-include vendor/lineage/config/BoardConfigSoong.mk
+include vendor/cipher/config/BoardConfigSoong.mk

@@ -1,5 +1,6 @@
 # Copyright (C) 2017 Unlegacy-Android
 # Copyright (C) 2017,2020 The LineageOS Project
+# Copyright (C) 2021 CipherOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,14 +17,14 @@
 # -----------------------------------------------------------------
 # Lineage OTA update package
 
-LINEAGE_TARGET_PACKAGE := $(PRODUCT_OUT)/$(LINEAGE_VERSION).zip
+CIPHER_TARGET_PACKAGE := $(PRODUCT_OUT)/$(CIPHER_VERSION).zip
 
 MD5 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/md5sum
 
 .PHONY: bacon
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
-	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(LINEAGE_TARGET_PACKAGE)
-	$(hide) $(MD5) $(LINEAGE_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(LINEAGE_TARGET_PACKAGE).md5sum
-	@echo "Package Complete: $(LINEAGE_TARGET_PACKAGE)" >&2
+	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CIPHER_TARGET_PACKAGE)
+	$(hide) $(MD5) $(CIPHER_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(CIPHER_TARGET_PACKAGE).md5sum
+	@echo "Package Complete: $(CIPHER_TARGET_PACKAGE)" >&2
 	@echo "Build is getting done..." >&2
-	$(hide) bash vendor/lineage/build/tools/cipher.sh
+	$(hide) bash vendor/cipher/build/tools/cipher.sh

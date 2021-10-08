@@ -14,13 +14,13 @@
 
 # Bootanimation
 ifeq ($(TARGET_BOOT_ANIMATION_RES),720)
-     PRODUCT_COPY_FILES += vendor/lineage/prebuilt/common/bootanimation/bootanimation-720.zip:$(TARGET_COPY_OUT_SYSTEM)/media/bootanimation.zip
+     PRODUCT_COPY_FILES += vendor/cipher/prebuilt/common/bootanimation/bootanimation-720.zip:$(TARGET_COPY_OUT_SYSTEM)/media/bootanimation.zip
 else ifeq ($(TARGET_BOOT_ANIMATION_RES),1080)
-     PRODUCT_COPY_FILES += vendor/lineage/prebuilt/common/bootanimation/bootanimation-1080.zip:$(TARGET_COPY_OUT_SYSTEM)/media/bootanimation.zip
+     PRODUCT_COPY_FILES += vendor/cipher/prebuilt/common/bootanimation/bootanimation-1080.zip:$(TARGET_COPY_OUT_SYSTEM)/media/bootanimation.zip
 else ifeq ($(TARGET_BOOT_ANIMATION_RES),1440)
-     PRODUCT_COPY_FILES += vendor/lineage/prebuilt/common/bootanimation/bootanimation-1440.zip:$(TARGET_COPY_OUT_SYSTEM)/media/bootanimation.zip
+     PRODUCT_COPY_FILES += vendor/cipher/prebuilt/common/bootanimation/bootanimation-1440.zip:$(TARGET_COPY_OUT_SYSTEM)/media/bootanimation.zip
 else
      $(warning TARGET_BOOT_ANIMATION_RES is invalid or undefined, using generic bootanimation)
 PRODUCT_COPY_FILES += \
-    vendor/lineage/prebuilt/common/bootanimation/bootanimation-720.zip:$(TARGET_COPY_OUT_SYSTEM)/media/bootanimation.zip
+    vendor/cipher/prebuilt/common/bootanimation/bootanimation-720.zip:$(TARGET_COPY_OUT_SYSTEM)/media/bootanimation.zip
 endif
