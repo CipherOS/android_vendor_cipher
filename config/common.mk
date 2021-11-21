@@ -228,6 +228,9 @@ ifeq ($(CIPHER_GAPPS), true)
     CIPHER_BUILD_ZIP_TYPE := GAPPS
 endif
 
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+  ro.cipher.ziptype=$(CIPHER_BUILD_ZIP_TYPE)
+
 # Add Face Unlock for Cipher
 ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
 PRODUCT_PACKAGES += \
