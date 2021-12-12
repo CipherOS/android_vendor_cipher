@@ -231,6 +231,12 @@ endif
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.cipher.ziptype=$(CIPHER_BUILD_ZIP_TYPE)
 
+# ExactCalculator
+ifeq ($(CIPHER_GAPPS), false)
+PRODUCT_PACKAGES += \
+    ExactCalculator
+endif
+
 # Add Face Unlock for Cipher
 ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
 PRODUCT_PACKAGES += \
