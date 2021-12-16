@@ -230,6 +230,18 @@ endif
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.cipher.ziptype=$(CIPHER_BUILD_ZIP_TYPE)
+  
+# CipherOS Go Edition
+ifeq ($(CIPHER_GO), true)
+    $(call inherit-product, build/make/target/product/go_defaults.mk)
+    CIPHER_BUILD_ZIP_TYPE := GO
+    PRODUCT_PACKAGES += \
+    Launcher3QuickStepGo
+
+    PRODUCT_DEXPREOPT_SPEED_APPS += \
+    Launcher3QuickStepGo
+    
+endif
 
 # ExactCalculator
 ifeq ($(CIPHER_GAPPS), false)
