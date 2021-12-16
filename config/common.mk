@@ -234,6 +234,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # CipherOS Go Edition
 ifeq ($(CIPHER_GO), true)
     $(call inherit-product, build/make/target/product/go_defaults.mk)
+    $(warning CIPHER_GO is defined, building CipherOS Go Edition)
     CIPHER_BUILD_ZIP_TYPE := GO
     PRODUCT_PACKAGES += \
     Launcher3QuickStepGo
