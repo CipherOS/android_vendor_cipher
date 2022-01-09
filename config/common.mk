@@ -223,7 +223,8 @@ ifeq ($(CIPHER_OFFICIAL), true)
     CIPHER_BUILD := OFFICIAL
     PRODUCT_PACKAGES += \
     Updater \
-    CipherShades
+    CipherShades \
+    CipherWidget
 endif
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
