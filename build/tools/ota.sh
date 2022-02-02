@@ -8,21 +8,24 @@ PURPLE='\033[0;35m'       # Purple
 CYAN='\033[0;36m'         # Cyan
 WHITE='\033[0;37m'        # White
 
-CODENAME=""
-DIR=""
+CODENAME=$1
+SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+DIR="../../../../"
 
-echo -e "${YELLOW}"
-echo "Enter full rom dir"
-echo -e "${RESET}"
-read DIR
+if [[ ! -f "$SCRIPTDIR/roomservice.py" ]]; then
+    echo "Script is only supposed to work with vendor/cipher!"
+    exit
+fi
 
-echo -e "${YELLOW}"
-echo "Enter codename"
-echo -e "${RESET}"
-read CODENAME
+if [[ $1 == "" ]]; then
+    echo "Provide a device codename!"
+    echo "Usage: $0 <codename>"
+    exit
+fi
+
 
 echo -e "${GREEN}"
-echo "Creating json for OTA"
+echo "Creating json for $CODENAME"
 echo -e "${YELLOW}"
 echo "{"
 echo '"response": ['
