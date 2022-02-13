@@ -218,7 +218,8 @@ CIPHER_BUILD_ZIP_TYPE := VANILLA
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.cipher.version.major=$(PRODUCT_VERSION_MAJOR) \
-  ro.cipher.version.minor=$(PRODUCT_VERSION_MINOR)
+  ro.cipher.version.minor=$(PRODUCT_VERSION_MINOR) \
+  ro.cipher.maintainer=$(CIPHER_MAINTAINER)
 
 # Define Official & Unofficial Builds
 ifeq ($(CIPHER_OFFICIAL), true)
