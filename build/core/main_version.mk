@@ -23,3 +23,7 @@ ADDITIONAL_SYSTEM_PROPERTIES += \
 # LineageOS Platform Internal Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.lineage.build.version.plat.rev=$(LINEAGE_PLATFORM_REV)
+
+# CipherOS Android 12L Specific Props
+ADDITIONAL_SYSTEM_PROPERTIES += \
+    ro.cipher.settings.android_version=12L
