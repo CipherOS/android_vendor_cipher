@@ -235,7 +235,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Gapps
 ifeq ($(CIPHER_GAPPS), true)
-    $(call inherit-product, vendor/gapps/common/common-vendor.mk)
+    $(call inherit-product, vendor/gms/products/gms.mk)
     CIPHER_BUILD_ZIP_TYPE := GAPPS
 endif
 
