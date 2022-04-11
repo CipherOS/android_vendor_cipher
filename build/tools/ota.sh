@@ -35,7 +35,7 @@ echo ' "filename":' "\"$(basename $(ls "$DIR"/out/target/product/"$CODENAME"/Cip
 echo ' "id":' "\"$((cat "$DIR"/out/target/product/"$CODENAME"/CipherOS-3*.zip.md5sum) | cut -d ' ' -f1)\","
 echo ' "romtype":'"\"STABLE\","
 echo ' "size":' "\"$(stat -c%s "$DIR"/out/target/product/"$CODENAME"/CipherOS-3*.zip)\","
-echo ' "url":' "\"https://master.dl.sourceforge.net/project/CipherOS/Cipher-3.x/EXODUS/"$CODENAME"/$(basename $(ls "$DIR"/out/target/product/"$CODENAME"/CipherOS-3*.zip))\","
+echo ' "url":' "\"https://master.dl.sourceforge.net/project/cipheros/Cipher-3.x/EXODUS/"$CODENAME"/$(basename $(ls "$DIR"/out/target/product/"$CODENAME"/CipherOS-3*.zip))\","
 echo ' "version":' "\"3.2-EXODUS\""
 echo "}"
 echo "]"
