@@ -136,7 +136,7 @@ PRODUCT_PACKAGES += \
 
 # Themes
 PRODUCT_PACKAGES += \
-    LineageThemesStub \
+    CipherThemesStub \
     ThemePicker
 
 # Config
