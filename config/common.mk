@@ -219,6 +219,7 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/cipher/overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/cipher/overlay/common
 
+### Cipher Versioning Stuff Starts here 
 PRODUCT_VERSION_MAJOR = 3.2
 PRODUCT_VERSION_MINOR = EXODUS
 CIPHER_BUILD := UNOFFICIAL
@@ -228,6 +229,21 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.cipher.version.major=$(PRODUCT_VERSION_MAJOR) \
   ro.cipher.version.minor=$(PRODUCT_VERSION_MINOR) \
   ro.cipher.maintainer=$(CIPHER_MAINTAINER)
+
+## Cipher Build ID 
+# Cipher Build ID Config:
+#  - C34  => Cipher Release 3.4 , Cipher <Release Version Major> <Release Version Minor
+#  - SB  => SB - Stable, BT - Beta, AL - Alpha, IT - Internal
+#  - S   => Android Version
+#  - 32   => Android API Level (32 = Sv2)
+#  - RL03 => RL - Release, DP - Development
+
+PLATFORM_CIPHER_BUILD_ID := C34.SB.S.32.RL03
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+  ro.cipher.build.id=$(PLATFORM_CIPHER_BUILD_ID)
+
+## Cipher Build ID Config End
 
 # Define Official & Unofficial Builds
 ifeq ($(CIPHER_OFFICIAL), true)
@@ -268,6 +284,8 @@ ifeq ($(CIPHER_GAPPS), false)
 PRODUCT_PACKAGES += \
     ExactCalculator
 endif
+## Cipher Versioning Vars End
+
 
 # Add Face Unlock for Cipher
 ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
