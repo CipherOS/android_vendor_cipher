@@ -30,6 +30,7 @@ endif
 # Test Build Tag
 ifeq ($(CIPHER_TEST),true)
     CIPHER_BUILD := DEVELOPER
+    PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
 endif
 
 # Backup Tool
