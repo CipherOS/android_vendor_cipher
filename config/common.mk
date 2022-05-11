@@ -227,12 +227,16 @@ PRODUCT_PACKAGES += \
 endif
 endif
 
-# Dex preopt
+# SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
 
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    dalvik.vm.systemuicompilerfilter=speed
+
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/cipher/overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/cipher/overlay/common
+
 
 ### Cipher Versioning Stuff Starts here 
 PRODUCT_VERSION_MAJOR = 5.0
