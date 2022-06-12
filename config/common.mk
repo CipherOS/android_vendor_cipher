@@ -132,6 +132,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Terminal
 
+# GameMode
+PRODUCT_PACKAGES += \
+    GameSpace
+    
 # Lineage packages
 PRODUCT_PACKAGES += \
     LineageParts \
