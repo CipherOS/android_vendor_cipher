@@ -247,6 +247,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Define Official & Unofficial Builds
 ifeq ($(CIPHER_OFFICIAL), true)
+    $(call inherit-product, vendor/apps/apps.mk)
     CIPHER_BUILD := OFFICIAL
     PRODUCT_PACKAGES += \
     Updater \
