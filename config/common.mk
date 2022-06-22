@@ -277,15 +277,15 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.cipher.status=$(CIPHER_BUILD)
 
 # Gapps
-CIPHER_GAPPS ?= true
-ifeq ($(CIPHER_GAPPS), true)
-    ifeq ($(CIPHER_GO), true)
-        $(call inherit-product, vendor/partner_gms/products/gms_go_2gb.mk)
-    else
-        $(call inherit-product, vendor/partner_gms/products/gms.mk)
-    endif
-    CIPHER_BUILD_ZIP_TYPE := GAPPS
-endif
+#CIPHER_GAPPS ?= true
+#ifeq ($(CIPHER_GAPPS), true)
+#    ifeq ($(CIPHER_GO), true)
+#        $(call inherit-product, vendor/partner_gms/products/gms_go_2gb.mk)
+#    else
+#        $(call inherit-product, vendor/partner_gms/products/gms.mk)
+#    endif
+#    CIPHER_BUILD_ZIP_TYPE := GAPPS
+#endif
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.cipher.ziptype=$(CIPHER_BUILD_ZIP_TYPE)
@@ -307,14 +307,14 @@ endif
 
 
 # Add Face Unlock for Cipher
-ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
-PRODUCT_PACKAGES += \
-    FaceUnlockService
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.face_unlock_service.enabled=$(TARGET_FACE_UNLOCK_SUPPORTED)
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
-endif
+#ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
+#PRODUCT_PACKAGES += \
+#    FaceUnlockService
+#PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+#    ro.face_unlock_service.enabled=$(TARGET_FACE_UNLOCK_SUPPORTED)
+#PRODUCT_COPY_FILES += \
+#    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
+#endif
 
 # Add CipherOS Stuff 
 CIPHER_VERSION := CipherOS-$(PRODUCT_VERSION_MAJOR)-$(PRODUCT_VERSION_MINOR)-$(TARGET_PRODUCT)-$(shell date +%Y%m%d-%H%M)-$(CIPHER_BUILD)-$(CIPHER_BUILD_ZIP_TYPE)
