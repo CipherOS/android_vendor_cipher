@@ -224,8 +224,8 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/cipher/overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/cipher/overlay/common
 
 ### Cipher Versioning Stuff Starts here 
-PRODUCT_VERSION_MAJOR = 3.6
-PRODUCT_VERSION_MINOR = STRIKE
+PRODUCT_VERSION_MAJOR = 3.8
+PRODUCT_VERSION_MINOR = NOVA
 CIPHER_BUILD := UNOFFICIAL
 CIPHER_BUILD_ZIP_TYPE := VANILLA
 
@@ -236,13 +236,13 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 ## Cipher Build ID 
 # Cipher Build ID Config:
-#  - C36  => Cipher Release 3.6 , Cipher <Release Version Major> <Release Version Minor
+#  - C38  => Cipher Release 3.6 , Cipher <Release Version Major> <Release Version Minor
 #  - SB  => SB - Stable, BT - Beta, AL - Alpha, IT - Internal
 #  - S   => Android Version
 #  - 32   => Android API Level (32 = Sv2)
-#  - RL04 => RL - Release, DP - Development
+#  - RL05 => RL - Release, DP - Development
 
-PLATFORM_CIPHER_BUILD_ID := C36.SB.S.32.RL04
+PLATFORM_CIPHER_BUILD_ID := C38.SB.S.32.RL05
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.cipher.build.id=$(PLATFORM_CIPHER_BUILD_ID)
