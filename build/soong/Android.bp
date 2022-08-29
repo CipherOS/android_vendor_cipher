@@ -120,23 +120,6 @@ target_shim_libs {
 }
 
 soong_config_module_type {
-    name: "gralloc_handle_reserved_size",
-    module_type: "cc_defaults",
-    config_namespace: "lineageGlobalVars",
-    bool_variables: ["gralloc_handle_has_reserved_size"],
-    properties: ["export_cflags"],
-}
-
-gralloc_handle_reserved_size {
-    name: "gralloc_handle_has_reserved_size_defaults",
-    soong_config_variables: {
-        gralloc_handle_has_reserved_size: {
-            export_cflags: ["-DGRALLOC_HANDLE_HAS_RESERVED_SIZE"],
-        },
-    },
-}
-
-soong_config_module_type {
     name: "vendor_init",
     module_type: "cc_defaults",
     config_namespace: "lineageGlobalVars",
@@ -440,39 +423,6 @@ surfaceflinger_qcom_extensions {
         qcom_display_headers_namespace: {
             cppflags: ["-DQCOM_UM_FAMILY"],
             header_libs: ["//%s:display_intf_headers"],
-        },
-    },
-}
-
-soong_config_module_type {
-    name: "stagefright_qcom_legacy",
-    module_type: "cc_defaults",
-    config_namespace: "lineageQcomVars",
-    bool_variables: ["uses_qcom_bsp_legacy"],
-    properties: ["cppflags"],
-}
-
-stagefright_qcom_legacy {
-    name: "stagefright_qcom_legacy_defaults",
-    soong_config_variables: {
-        uses_qcom_bsp_legacy: {
-            cppflags: ["-DQCOM_BSP_LEGACY"],
-        },
-    },
-}
-soong_config_module_type {
-    name: "inputdispatcher_skip_event_key",
-    module_type: "cc_defaults",
-    config_namespace: "lineageGlobalVars",
-    value_variables: ["target_inputdispatcher_skip_event_key"],
-    properties: ["cppflags"],
-}
-
-inputdispatcher_skip_event_key {
-    name: "inputdispatcher_skip_event_key_defaults",
-    soong_config_variables: {
-        target_inputdispatcher_skip_event_key: {
-            cppflags: ["-DINPUTDISPATCHER_SKIP_EVENT_KEY=%s"],
         },
     },
 }
