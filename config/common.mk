@@ -198,6 +198,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     rsync
 
+# Cipher Audio
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,vendor/cipher/prebuilt/media,$(TARGET_COPY_OUT_PRODUCT)/media)
+
+PRODUCT_PRODUCT_PROPERTIES := \
+    ro.config.ringtone=Itsrealme.ogg \
+    ro.config.notification_sound=realme_jingle.ogg \
+    ro.config.alarm_alert=rise.ogg
+
 # Storage manager
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.storage_manager.enabled=true
