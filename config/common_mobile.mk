@@ -1,11 +1,6 @@
 # Inherit common mobile Lineage stuff
 $(call inherit-product, vendor/cipher/config/common.mk)
 
-# Default notification/alarm sounds
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.config.notification_sound=Argon.ogg \
-    ro.config.alarm_alert=Hassium.ogg
-
 # AOSP packages
 PRODUCT_PACKAGES += \
     Email \
