@@ -12,8 +12,8 @@ TARO := taro #SM8450
 PARROT := parrot #SM6450
 KALAMA := kalama #SM8550
 
-UM_3_18_FAMILY := msm8996
-UM_4_4_FAMILY := msm8998
+UM_3_18_FAMILY := msm8937 msm8996
+UM_4_4_FAMILY := msm8998 sdm660
 UM_4_9_FAMILY := sdm845 sdm710
 UM_4_14_FAMILY := $(MSMNILE) $(MSMSTEPPE) $(TRINKET) $(ATOLL)
 UM_4_19_FAMILY := $(KONA) $(LITO) $(BENGAL)
@@ -101,13 +101,6 @@ SOONG_CONFIG_rmnetctl_old_rmnet_data ?= false
 
 # Tell HALs that we're compiling an AOSP build with an in-line kernel
 TARGET_COMPILE_WITH_MSM_KERNEL := true
-
-ifneq ($(filter msm7x27a msm7x30 msm8660 msm8960,$(TARGET_BOARD_PLATFORM)),)
-    # Enable legacy audio functions
-    ifeq ($(BOARD_USES_LEGACY_ALSA_AUDIO),true)
-        USE_CUSTOM_AUDIO_POLICY := 1
-    endif
-endif
 
 # Enable media extensions
 TARGET_USES_MEDIA_EXTENSIONS := true
