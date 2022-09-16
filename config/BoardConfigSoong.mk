@@ -31,6 +31,7 @@ SOONG_CONFIG_lineageGlobalVars += \
     additional_gralloc_10_usage_bits \
     bootloader_message_offset \
     disable_postrender_cleanup \
+    gralloc_handle_has_reserved_size \
     has_legacy_camera_hal1 \
     has_memfd_backport \
     ignores_ftp_pptp_conntrack_failure \
@@ -65,6 +66,7 @@ endif
 
 # Soong bool variables
 SOONG_CONFIG_lineageGlobalVars_disable_postrender_cleanup := $(TARGET_DISABLE_POSTRENDER_CLEANUP)
+SOONG_CONFIG_lineageGlobalVars_gralloc_handle_has_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE)
 SOONG_CONFIG_lineageGlobalVars_has_legacy_camera_hal1 := $(TARGET_HAS_LEGACY_CAMERA_HAL1)
 SOONG_CONFIG_lineageGlobalVars_has_memfd_backport := $(TARGET_HAS_MEMFD_BACKPORT)
 SOONG_CONFIG_lineageGlobalVars_ignores_ftp_pptp_conntrack_failure := $(TARGET_IGNORES_FTP_PPTP_CONNTRACK_FAILURE)
@@ -83,6 +85,7 @@ SOONG_CONFIG_lineageQcomVars_uses_qti_camera_device := $(TARGET_USES_QTI_CAMERA_
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS ?= 0
+TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE ?= false
 TARGET_INIT_VENDOR_LIB ?= vendor_init
 TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY ?= libcamera_parameters
 TARGET_SURFACEFLINGER_UDFPS_LIB ?= surfaceflinger_udfps_lib
