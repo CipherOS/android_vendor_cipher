@@ -327,6 +327,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.surface_flinger.supports_background_blur=1
 endif
 
+# One Handed Mode
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.support_one_handed_mode=true
+    
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/cipher/config/partner_gms.mk
 # Inherit vendor/cipher-extras if exists
