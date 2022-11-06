@@ -272,6 +272,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.cipher.status=$(CIPHER_BUILD)
 
 # Gapps
+CIPHER_GAPPS ?= false
 ifeq ($(CIPHER_GAPPS), true)
     $(call inherit-product, vendor/partner_gms/products/gms.mk)
     CIPHER_BUILD_ZIP_TYPE := GAPPS
