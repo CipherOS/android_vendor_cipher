@@ -1,7 +1,7 @@
 # Allow vendor/extra to override any property by setting it first
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 
-PRODUCT_BRAND ?= CipherOS
+PRODUCT_BRAND := CipherOS
 
 # Bootanimation
 include vendor/cipher/config/bootanimation.mk
