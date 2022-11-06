@@ -272,10 +272,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.cipher.status=$(CIPHER_BUILD)
 
 # Gapps
-#ifeq ($(CIPHER_GAPPS), true)
-#    $(call inherit-product, vendor/gms/products/gms.mk)
-#    CIPHER_BUILD_ZIP_TYPE := GAPPS
-#endif
+ifeq ($(CIPHER_GAPPS), true)
+    $(call inherit-product, vendor/partner_gms/products/gms.mk)
+    CIPHER_BUILD_ZIP_TYPE := GAPPS
+endif
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.cipher.ziptype=$(CIPHER_BUILD_ZIP_TYPE)
