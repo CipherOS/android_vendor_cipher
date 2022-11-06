@@ -320,7 +320,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.cipher.build.date=$(shell LC_ALL=en_US.utf8 date "+%d_%B_%Y") \
 
 # Blur
-ifeq ($(TARGET_USES_BLUR), true)
+ifeq ($(CIPHER_BLUR), true)
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.sf.blurs_are_expensive=1 \
     ro.surface_flinger.supports_background_blur=1
