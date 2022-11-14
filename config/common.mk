@@ -238,10 +238,13 @@ PRODUCT_VERSION_MINOR = CALLISTO
 CIPHER_BUILD := UNOFFICIAL
 CIPHER_BUILD_ZIP_TYPE := VANILLA
 
+# Cipher Props
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.cipher.version.major=$(PRODUCT_VERSION_MAJOR) \
   ro.cipher.version.minor=$(PRODUCT_VERSION_MINOR) \
-  ro.cipher.maintainer=$(CIPHER_MAINTAINER)
+  ro.cipher.maintainer=$(CIPHER_MAINTAINER) \
+  ro.cipher.battery.capacity=$(CIPHER_BATTERY) \
+  ro.cipher.screen.size=$(CIPHER_SCREEN)
 
 ## Cipher Build ID 
 # Cipher Build ID Config:
