@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # -----------------------------------------------------------------
-# Lineage OTA update package
+# CipherOS OTA update package
 
 CIPHER_TARGET_PACKAGE := $(PRODUCT_OUT)/$(CIPHER_VERSION).zip
 
@@ -28,3 +28,19 @@ bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	@echo "Package Complete: $(CIPHER_TARGET_PACKAGE)" >&2
 	@echo "Build is getting done..." >&2
 	$(hide) bash vendor/cipher/build/tools/cipher.sh
+
+
+# -----------------------------------------------------------------
+# CipherOS fastboot package
+
+CIPHER_TARGET_FASTBOOT_PACKAGE := $(PRODUCT_OUT)/$(CIPHER_VERSION)-FASTBOOT.zip
+
+MD5 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/md5sum
+
+.PHONY: fastbootpkg
+fastbootpkg: $(INTERNAL_UPDATE_PACKAGE_TARGET)
+              $(hide) ln -f $(INTERNAL_UPDATE_PACKAGE_TARGET) $(CIPHER_TARGET_FASTBOOT_PACKAGE)
+              $(hide) $(MD5) $(CIPHER_TARGET_FASTBOOT_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(CIPHER_TARGET_FASTBOOT_PACKAGE).md5sum
+              @echo "Fastboot Package Complete: $(CIPHER_TARGET_FASTBOOT_PACKAGE)" >&2
+              @echo "Build is getting done..." >&2
+              $(hide) bash vendor/cipher/build/tools/cipher.sh
