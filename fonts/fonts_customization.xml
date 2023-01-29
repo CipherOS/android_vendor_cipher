@@ -42,6 +42,10 @@
     </font>
   </family>
 
+  <family customizationType="new-named-family" name="cipher-clock">
+    <font>oplus-sans.ttf</font>
+  </family>
+
   <family customizationType="new-named-family" name="google-sans-medium">
     <font weight="500" style="normal">GoogleSans-Regular.ttf
       <axis tag="GRAD" stylevalue="0"/>
