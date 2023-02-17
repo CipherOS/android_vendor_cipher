@@ -145,6 +145,7 @@ PRODUCT_PACKAGES += \
 # Themes
 PRODUCT_PACKAGES += \
     AndroidBlackThemeOverlay \
+    AndroidLightThemeOverlay \
     CipherThemesStub \
     ThemePicker
 
