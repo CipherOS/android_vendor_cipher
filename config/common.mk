@@ -279,7 +279,11 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Gapps
 CIPHER_GAPPS ?= false
 ifeq ($(CIPHER_GAPPS), true)
-    $(call inherit-product, vendor/partner_gms/products/gms.mk)
+    ifeq ($(CIPHER_GO), true)
+        $(call inherit-product, vendor/partner_gms/products/gms_go_2gb.mk)
+    else
+        $(call inherit-product, vendor/partner_gms/products/gms.mk)
+    endif
     CIPHER_BUILD_ZIP_TYPE := GAPPS
 endif
 
