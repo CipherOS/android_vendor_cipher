@@ -277,7 +277,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.cipher.status=$(CIPHER_BUILD)
 
 # Gapps
-CIPHER_GAPPS ?= false
+CIPHER_GAPPS ?= true
 ifeq ($(CIPHER_GAPPS), true)
     ifeq ($(CIPHER_GO), true)
         $(call inherit-product, vendor/partner_gms/products/gms_go_2gb.mk)
