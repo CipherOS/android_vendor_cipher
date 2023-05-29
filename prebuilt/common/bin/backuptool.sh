@@ -104,7 +104,7 @@ unmount_system() {
 }
 
 get_block_for_mount_point() {
-  grep -v "^#" /etc/recovery.fstab | grep " $1 " | tail -n1 | tr -s ' ' | cut -d' ' -f1
+  grep -v "^#" /etc/recovery.fstab | grep "[[:blank:]]$1[[:blank:]]" | tail -n1 | tr -s [:blank:] ' ' | cut -d' ' -f1
 }
 
 find_block() {
@@ -171,6 +171,7 @@ case "$1" in
       mkdir -p $C
       preserve_addon_d
       run_stages pre-backup backup post-backup
+      umount_extra $all_V3_partitions
     fi
     unmount_system
   ;;

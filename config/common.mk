@@ -118,10 +118,6 @@ TARGET_SCREEN_HEIGHT ?= 1920
 PRODUCT_PACKAGES += \
     bootanimation.zip
 
-# AOSP packages
-PRODUCT_PACKAGES += \
-    Terminal
-
 # Lineage packages
 PRODUCT_PACKAGES += \
     LineageParts \
@@ -140,9 +136,7 @@ PRODUCT_PACKAGES += \
 # Extra tools in Lineage
 PRODUCT_PACKAGES += \
     7z \
-    awk \
     bash \
-    bzip2 \
     curl \
     getcap \
     htop \
@@ -153,7 +147,6 @@ PRODUCT_PACKAGES += \
     setcap \
     unrar \
     vim \
-    wget \
     zip
 
 # System fonts
@@ -163,10 +156,8 @@ PRODUCT_PACKAGES += \
 
 # Filesystems tools
 PRODUCT_PACKAGES += \
-    fsck.exfat \
     fsck.ntfs \
     mke2fs \
-    mkfs.exfat \
     mkfs.ntfs \
     mount.ntfs
 
@@ -207,7 +198,11 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
 
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/lineage/overlay
-DEVICE_PACKAGE_OVERLAYS += vendor/lineage/overlay/common
+PRODUCT_PACKAGE_OVERLAYS += vendor/lineage/overlay/common
+
+# Translations
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/crowdin/overlay
+PRODUCT_PACKAGE_OVERLAYS += vendor/crowdin/overlay
 
 PRODUCT_VERSION_MAJOR = 1.7
 PRODUCT_VERSION_MINOR = ASTRA

@@ -27,6 +27,11 @@ PRODUCT_PACKAGES += \
     AudioFX
 endif
 
+ifneq ($(TARGET_EXCLUDES_AUDIOFX),true)
+PRODUCT_PACKAGES += \
+    AudioFX
+endif
+
 ifeq ($(PRODUCT_TYPE), go)
 PRODUCT_PACKAGES += \
     TrebuchetQuickStepGo
@@ -58,6 +63,11 @@ PRODUCT_PACKAGES += \
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images
+
+ifneq ($(WITH_LINEAGE_CHARGER),false)
+PRODUCT_PACKAGES += \
+    lineage_charger_animation
+endif
 
 # Customizations
 PRODUCT_PACKAGES += \

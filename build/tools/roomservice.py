@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # Copyright (C) 2012-2013, The CyanogenMod Project
-# Copyright (C) 2012-2015, SlimRoms Project
-# Copyright (C) 2016-2017, AOSiP
-# Copyright (C) 2020, CipherOS Project
+#           (C) 2017-2018,2020-2021, The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,6 +17,7 @@
 from __future__ import print_function
 
 import base64
+import glob
 import json
 import netrc
 import os
@@ -56,6 +55,19 @@ local_manifests = '.repo/local_manifests'
 if not os.path.exists(local_manifests):
     os.makedirs(local_manifests)
 
+if not depsonly:
+    githubreq = urllib.request.Request("https://api.github.com/search/repositories?q=%s+user:LineageOS+in:name+fork:true" % device)
+    add_auth(githubreq)
+    try:
+        result = json.loads(urllib.request.urlopen(githubreq).read().decode())
+    except urllib.error.URLError:
+        print("Failed to search GitHub")
+        sys.exit(1)
+    except ValueError:
+        print("Failed to parse return data from GitHub")
+        sys.exit(1)
+    for res in result.get('items', []):
+        repositories.append(res)
 
 def debug(*args, **kwargs):
     if DEBUG:
@@ -116,6 +128,23 @@ def load_manifest(manifest):
         man = ElementTree.Element("manifest")
     return man
 
+def get_default_revision():
+    m = ElementTree.parse(get_manifest_path())
+    d = m.findall('default')[0]
+    r = d.get('revision')
+    return r.replace('refs/heads/', '').replace('refs/tags/', '')
+
+def get_from_manifest(devicename):
+    for path in glob.glob(".repo/local_manifests/*.xml"):
+        try:
+            lm = ElementTree.parse(path)
+            lm = lm.getroot()
+        except:
+            lm = ElementTree.Element("manifest")
+
+        for localpath in lm.findall("project"):
+            if re.search("android_device_.*_%s$" % device, localpath.get("name")):
+                return localpath.get("path")
 
 def get_default(manifest=None):
     m = manifest or load_manifest(get_manifest_path())
@@ -160,6 +189,39 @@ def get_from_manifest(device_name):
                 return lp
     return None
 
+def is_in_manifest(projectpath):
+    for path in glob.glob(".repo/local_manifests/*.xml"):
+        try:
+            lm = ElementTree.parse(path)
+            lm = lm.getroot()
+        except:
+            lm = ElementTree.Element("manifest")
+
+        for localpath in lm.findall("project"):
+            if localpath.get("path") == projectpath:
+                return True
+
+    # Search in main manifest, too
+    try:
+        lm = ElementTree.parse(get_manifest_path())
+        lm = lm.getroot()
+    except:
+        lm = ElementTree.Element("manifest")
+
+    for localpath in lm.findall("project"):
+        if localpath.get("path") == projectpath:
+            return True
+
+    # ... and don't forget the lineage snippet
+    try:
+        lm = ElementTree.parse(".repo/manifests/snippets/lineage.xml")
+        lm = lm.getroot()
+    except:
+        lm = ElementTree.Element("manifest")
+
+    for localpath in lm.findall("project"):
+        if localpath.get("path") == projectpath:
+            return True
 
 def is_in_manifest(project_path):
     for man in (custom_local_manifest, get_manifest_path()):
