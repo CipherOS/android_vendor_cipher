@@ -217,6 +217,8 @@ ifeq ($(CIPHER_OFFICIAL), true)
     CipherShades
 endif
 
+CIPHER_GAPPS ?= true
+
 # Gapps
 ifeq ($(CIPHER_GAPPS), true)
     $(call inherit-product, vendor/gapps/common/common-vendor.mk)
