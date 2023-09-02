@@ -210,4 +210,7 @@
 
     <!-- Default component for QR code scanner -->
     <string name="config_defaultQrCodeComponent">org.lineageos.aperture/.QrScannerActivity</string>
+
+    <!-- Default value for performant auth feature. -->
+    <bool name="config_performantAuthDefault">true</bool>
 </resources>
