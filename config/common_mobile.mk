@@ -56,7 +56,7 @@ PRODUCT_PACKAGES += \
 
 ifneq ($(CIPHER_CHARGER),false)
 PRODUCT_PACKAGES += \
-    cipher_charger_animation
+    cipher_charger_animation \
     cipher_charger_animation_vendor
 endif
 
