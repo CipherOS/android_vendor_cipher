@@ -10,7 +10,8 @@ ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.cipher.releasetype=$(CIPHER_BUILD) \
     ro.cipher.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
     ro.modversion=$(LINEAGE_VERSION) \
-    ro.lineagelegal.url=https://lineageos.org/legal
+    ro.url.legal=https://cipheros.org/legal \
+    ro.url.legal.android_privacy=https://cipheros.org/legal
 
 # LineageOS Platform Display Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
