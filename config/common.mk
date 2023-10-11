@@ -54,10 +54,6 @@ endif
 PRODUCT_COPY_FILES += \
     vendor/cipher/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml
 
-# Lineage-specific broadcast actions whitelist
-PRODUCT_COPY_FILES += \
-    vendor/cipher/config/permissions/lineage-sysconfig.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/lineage-sysconfig.xml
-
 # permission Priv-App
 PRODUCT_COPY_FILES += \
     vendor/cipher/config/permissions/privapp-permissions-omni.xml:system/etc/permissions/privapp-permissions-omni.xml
@@ -78,9 +74,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_0719.kl
 
-# This is Lineage!
+# CipherOS
 PRODUCT_COPY_FILES += \
-    vendor/cipher/config/permissions/org.lineageos.android.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/org.lineageos.android.xml
+    vendor/cipher/config/permissions/com.cipheros.android.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.cipheros.android.xml
 
 # Disable remote keyguard animation
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -89,19 +85,15 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Enforce privapp-permissions whitelist
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.control_privapp_permissions=enforce
+
 # Fonts
 include vendor/cipher/config/fonts.mk
 
 # Include AOSP audio files
 include vendor/cipher/config/aosp_audio.mk
 
-# Include Lineage audio files
-include vendor/cipher/config/lineage_audio.mk
-
-# TWRP
-ifeq ($(WITH_TWRP),true)
-include vendor/cipher/config/twrp.mk
-endif
+# Include Cipher audio files
+include vendor/cipher/config/cipher_audio.mk
 
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
