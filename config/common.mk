@@ -98,11 +98,6 @@ include vendor/cipher/config/aosp_audio.mk
 # Include Lineage audio files
 include vendor/cipher/config/lineage_audio.mk
 
-ifneq ($(TARGET_DISABLE_LINEAGE_SDK), true)
-# Lineage SDK
-include vendor/cipher/config/lineage_sdk_common.mk
-endif
-
 # TWRP
 ifeq ($(WITH_TWRP),true)
 include vendor/cipher/config/twrp.mk
