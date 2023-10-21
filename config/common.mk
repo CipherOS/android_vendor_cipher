@@ -327,5 +327,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/cipher/config/partner_gms.mk
+
+# Inherit SystemUI Clocks if they exist
+$(call inherit-product-if-exists, vendor/SystemUIClocks/product.mk)
 # Inherit vendor/cipher-extras if exists
 $(call inherit-product-if-exists, vendor/cipher-extra/cipher.mk)
