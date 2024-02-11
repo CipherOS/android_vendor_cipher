@@ -123,11 +123,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     GameSpace
     
-# Lineage packages
+# Misc packages
 PRODUCT_PACKAGES += \
-    LineageParts \
-    LineageSettingsProvider \
-    LineageSetupWizard
+    SetupWizard
 
 # Themes
 PRODUCT_PACKAGES += \
