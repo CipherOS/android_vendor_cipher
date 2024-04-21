@@ -9,3 +9,9 @@ PRODUCT_PACKAGES += \
 
 # Include Lineage LatinIME dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/cipher/overlay/dictionaries
+
+# Settings
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.settings.large_screen_opt.enabled=true
+
+$(call inherit-product, vendor/cipher/config/wifionly.mk)
