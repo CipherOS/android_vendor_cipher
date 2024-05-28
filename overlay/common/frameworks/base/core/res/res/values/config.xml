@@ -147,13 +147,13 @@
     <string name="config_deviceConfiguratorPackageName" translatable="false">org.protonaosp.deviceconfig</string>
     
     <!-- Name of a font family to use for body text. -->
-    <string name="config_bodyFontFamily">google-sans-text</string>
-    <string name="config_bodyFontFamilyMedium">google-sans-text-medium</string>
+    <string name="config_bodyFontFamily">rmsans</string>
+    <string name="config_bodyFontFamilyMedium">rmsans-medium</string>
 
     <!-- Name of a font family to use for headlines. If empty, falls back to platform default -->
-    <string name="config_headlineFontFamily">google-sans</string>
-    <string name="config_headlineFontFamilyMedium">google-sans-medium</string>
-    <string name="config_headlineFontFeatureSettings">ss03</string>
+    <string name="config_headlineFontFamily">rmsans</string>
+    <string name="config_headlineFontFamilyMedium">rmsans-medium</string>
+    <string name="config_headlineFontFeatureSettings">rmsans-medium</string>
 
     <!-- Wallpaper cropper package. Used as the default cropper if the active launcher doesn't
          handle wallpaper cropping.
