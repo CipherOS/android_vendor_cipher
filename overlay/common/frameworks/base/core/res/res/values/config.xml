@@ -153,10 +153,78 @@
 
     <!-- Define device configs on boot -->
     <string-array name="global_device_configs_override">
+
        <!-- Enable app cloning  -->
        <item>app_cloning/cloned_apps_enabled=true</item>
        <item>app_cloning/delete_all_app_clones_enabled=true</item>
        <item>app_cloning/enable_app_cloning_building_blocks=true</item>
+
+        <!-- Enable new location indicators -->
+        <item>privacy/location_access_check_enabled=true</item>
+        <item>privacy/location_accuracy_enabled=true</item>
+        <item>privacy/location_indicator_settings_enabled=true</item>
+        <item>privacy/location_indicators_enabled=true</item>
+        <item>privacy/location_indicators_show_system=false</item>
+        <item>privacy/location_indicators_small_enabled=true</item>
+
+        <!-- Enable shared connectivity -->
+        <item>wifi/shared_connectivity_enabled=true</item>
+
+        <!-- Enable safety center -->
+        <item>privacy/safety_center_is_enabled=true</item>
+
+        <!-- Don't pin camera app to save memory -->
+        <item>runtime_native_boot/pin_camera=false</item>
+
+        <!-- Globally enable the new photo picker -->
+        <item>storage_native_boot/take_over_get_content=true</item>
+
+        <!-- Machine learning back gesture (requires TensorFlow model) -->
+        <item>systemui/use_back_gesture_ml_model=true</item>
+        <item>systemui/back_gesture_ml_model_name=backgesture</item>
+        <item>systemui/back_gesture_ml_model_threshold=0.8</item>
+
+        <!-- Enable smart actions in the clipboard overlay -->
+        <item>systemui/clipboard_overlay_show_actions=true</item>
+
+        <!-- USAP Pool -->
+        <item>runtime_native/usap_pool_enabled=true</item>
+        <item>runtime_native/usap_pool_refill_delay_ms=3000</item>
+        <item>runtime_native/usap_pool_size_max=10</item>
+        <item>runtime_native/usap_pool_size_min=1</item>
+        <item>runtime_native/usap_refill_threshold=5</item>
+
+        <!-- Notification Assistant (DPS) -->
+        <item>notification_assistant/generate_actions=true</item>
+        <item>notification_assistant/generate_replies=true</item>
+        <item>device_personalization_services/NotificationAssistant__enable_service=true</item>
+        <item>device_personalization_services/NotificationAssistant__enable_upgrade_importance=true</item>
+        <item>device_personalization_services/NotificationAssistant__importance_model_download_url=https://www.gstatic.com/android/notifications/importance/v1/manifest.json</item>
+        <item>device_personalization_services/NotificationAssistant__importance_model_type=channel_stats</item>
+        <item>device_personalization_services/NotificationAssistant__importance_model_version=1</item>
+        <item>device_personalization_services/NotificationAssistant__max_importance_variance=0.5</item>
+
+        <!-- System Ui -->
+        <item>systemui/quick_access_wallet_enabled=true</item>
+        <item>systemui/enable_screenshot_corner_flow=true</item>
+        <item>systemui/enable_screenshot_notification_smart_actions=true</item>
+        <item>systemui/enable_screenshot_scrolling=true</item>
+        <item>systemui/volume_separate_notification=true</item>
+        <item>systemui/tap_to_edit=true</item>
+
+        <!-- Privacy -->
+        <item>privacy/discrete_history_cutoff_millis=604800000</item>
+        <item>privacy/permissions_hub_enabled=true</item>
+        <item>privacy/permissions_hub_2_enabled=true</item>
+        <item>privacy/privacy_dashboard_7_day_toggle=true</item>
+        <item>privacy/warning_banner_enabled=true</item>
+        <item>privacy/safety_protection_enabled=true</item>
+
+        <!-- Settings -->
+        <item>settings_ui/bt_slice_settings_enabled=true</item>
+        <item>settings_ui/bt_advanced_header_enabled=true</item>
+        <item>settings_ui/bt_near_by_suggestion_enabled=true</item>
+        <item>settings_ui/bt_le_audio_contact_sharing_enabled=true</item>
     </string-array>
     
     <!-- Flag indicating which package name can access DeviceConfig table -->
