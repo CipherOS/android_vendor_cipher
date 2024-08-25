@@ -60,6 +60,8 @@
         <item>com.android.systemui</item>
         <!-- Tethering -->
         <item>com.android.networkstack.tethering</item>
+        <!-- GMS location history -->
+        <item>com.google.android.gms.location.history</item>
     </string-array>
 
     <bool name="config_cellBroadcastAppLinks">true</bool>
