@@ -333,7 +333,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 -include vendor/cipher/config/partner_gms.mk
 
 # SystemUIClocks
-PRODUCT_USES_SYSTEMUICLOCKS ?= false
+PRODUCT_USES_SYSTEMUICLOCKS ?= true
 ifeq ($(PRODUCT_USES_SYSTEMUICLOCKS), true)
     $(call inherit-product, vendor/SystemUIClocks/product.mk)
 endif
