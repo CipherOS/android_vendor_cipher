@@ -12,5 +12,7 @@
         <!-- Enable VoNR by default on supported devices -->
         <boolean name="vonr_enabled_bool" value="true"/>
 
+        <int name="nr_advanced_threshold_bandwidth_khz_int" value="0"/>
+
     </carrier_config>
 </carrier_config_list>
