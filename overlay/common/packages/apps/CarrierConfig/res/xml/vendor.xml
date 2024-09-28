@@ -8,5 +8,9 @@
         <boolean name="show_4g_for_lte_data_icon_bool" value="true"/>
 
         <int name="lte_plus_threshold_bandwidth_khz_int" value="0"/>
+
+        <!-- Enable VoNR by default on supported devices -->
+        <boolean name="vonr_enabled_bool" value="true"/>
+
     </carrier_config>
 </carrier_config_list>
