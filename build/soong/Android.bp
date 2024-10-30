@@ -42,12 +42,22 @@ lineage_generator {
     ],
 }
 
-cc_library_headers {
-    name: "generated_kernel_headers",
+cc_defaults {
+    name: "generated_kernel_header_defaults",
     generated_headers: ["generated_kernel_includes"],
     export_generated_headers: ["generated_kernel_includes"],
     vendor_available: true,
     recovery_available: true,
+}
+
+cc_library_headers {
+    name: "generated_kernel_headers",
+    defaults: ["generated_kernel_header_defaults"],
+}
+
+cc_library_headers {
+    name: "qti_kernel_headers",
+    defaults: ["generated_kernel_header_defaults"],
 }
 
 // Target platform agnostic config modules
@@ -72,6 +82,23 @@ aapt_version_code {
 }
 
 soong_config_module_type {
+    name: "camera_override_format_from_reserved",
+    module_type: "cc_defaults",
+    config_namespace: "lineageGlobalVars",
+    bool_variables: ["camera_override_format_from_reserved"],
+    properties: ["cppflags"],
+}
+
+camera_override_format_from_reserved {
+    name: "camera_override_format_from_reserved_defaults",
+    soong_config_variables: {
+        camera_override_format_from_reserved: {
+            cppflags: ["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"],
+        },
+    },
+}
+
+soong_config_module_type {
     name: "gralloc_10_usage_bits",
     module_type: "cc_defaults",
     config_namespace: "lineageGlobalVars",
@@ -84,6 +111,23 @@ gralloc_10_usage_bits {
     soong_config_variables: {
         additional_gralloc_10_usage_bits: {
             cppflags: ["-DADDNL_GRALLOC_10_USAGE_BITS=%s"],
+        },
+    },
+}
+
+soong_config_module_type {
+    name: "gralloc_handle_custom_content_md_reserved_size",
+    module_type: "cc_defaults",
+    config_namespace: "lineageGlobalVars",
+    bool_variables: ["gralloc_handle_has_custom_content_md_reserved_size"],
+    properties: ["export_cflags"],
+}
+
+gralloc_handle_custom_content_md_reserved_size {
+    name: "gralloc_handle_has_custom_content_md_reserved_size_defaults",
+    soong_config_variables: {
+        gralloc_handle_has_custom_content_md_reserved_size: {
+            export_cflags: ["-DGRALLOC_HANDLE_HAS_CUSTOM_CONTENT_MD_RESERVED_SIZE"],
         },
     },
 }
@@ -106,18 +150,18 @@ gralloc_handle_reserved_size {
 }
 
 soong_config_module_type {
-    name: "target_shim_libs",
+    name: "gralloc_handle_ubwcp_format",
     module_type: "cc_defaults",
     config_namespace: "lineageGlobalVars",
-    value_variables: ["target_ld_shim_libs"],
-    properties: ["cppflags"],
+    bool_variables: ["gralloc_handle_has_ubwcp_format"],
+    properties: ["export_cflags"],
 }
 
-target_shim_libs {
-    name: "shim_libs_defaults",
+gralloc_handle_ubwcp_format {
+    name: "gralloc_handle_has_ubwcp_format_defaults",
     soong_config_variables: {
-        target_ld_shim_libs: {
-            cppflags: ["-DLD_SHIM_LIBS=\"%s\""],
+        gralloc_handle_has_ubwcp_format: {
+            export_cflags: ["-DGRALLOC_HANDLE_HAS_UBWCP_FORMAT"],
         },
     },
 }
@@ -207,6 +251,27 @@ trust_usb_control {
 }
 
 soong_config_module_type {
+    name: "bootloader_message_offset",
+    module_type: "cc_defaults",
+    config_namespace: "lineageGlobalVars",
+    value_variables: ["bootloader_message_offset"],
+    properties: [
+        "cflags",
+        "export_cflags",
+    ],
+}
+
+bootloader_message_offset {
+    name: "bootloader_message_offset_defaults",
+    soong_config_variables: {
+        bootloader_message_offset: {
+            cflags: ["-DBOARD_RECOVERY_BLDRMSG_OFFSET=%s"],
+            export_cflags: ["-DBOARD_RECOVERY_BLDRMSG_OFFSET=%s"],
+        },
+    },
+}
+
+soong_config_module_type {
     name: "egl_display_array",
     module_type: "cc_defaults",
     config_namespace: "lineageGlobalVars",
@@ -219,6 +284,78 @@ egl_display_array {
     soong_config_variables: {
         uses_egl_display_array: {
             cflags: ["-DEGL_DISPLAY_ARRAY"],
+        },
+    },
+}
+
+soong_config_module_type {
+    name: "health_charging_control",
+    module_type: "cc_defaults",
+    config_namespace: "lineageGlobalVars",
+    bool_variables: [
+        "target_health_charging_control_supports_toggle",
+        "target_health_charging_control_supports_bypass",
+        "target_health_charging_control_supports_deadline",
+    ],
+    value_variables: [
+        "target_health_charging_control_charging_path",
+        "target_health_charging_control_charging_enabled",
+        "target_health_charging_control_charging_disabled",
+        "target_health_charging_control_deadline_path",
+    ],
+    properties: ["cppflags"],
+}
+
+health_charging_control {
+    name: "health_charging_control_defaults",
+    soong_config_variables: {
+        target_health_charging_control_supports_toggle: {
+            cppflags: ["-DHEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE"],
+        },
+        target_health_charging_control_supports_bypass: {
+            cppflags: ["-DHEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS"],
+        },
+        target_health_charging_control_supports_deadline: {
+            cppflags: ["-DHEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE"],
+        },
+        target_health_charging_control_charging_path: {
+            cppflags: ["-DHEALTH_CHARGING_CONTROL_CHARGING_PATH=\"%s\""],
+        },
+        target_health_charging_control_charging_enabled: {
+            cppflags: ["-DHEALTH_CHARGING_CONTROL_CHARGING_ENABLED=\"%s\""],
+        },
+        target_health_charging_control_charging_disabled: {
+            cppflags: ["-DHEALTH_CHARGING_CONTROL_CHARGING_DISABLED=\"%s\""],
+        },
+        target_health_charging_control_deadline_path: {
+            cppflags: ["-DHEALTH_CHARGING_CONTROL_DEADLINE_PATH=\"%s\""],
+        },
+    },
+}
+
+soong_config_module_type {
+    name: "powershare",
+    module_type: "cc_defaults",
+    config_namespace: "lineageGlobalVars",
+    value_variables: [
+        "target_powershare_path",
+        "target_powershare_enabled",
+        "target_powershare_disabled",
+    ],
+    properties: ["cppflags"],
+}
+
+powershare {
+    name: "powershare_defaults",
+    soong_config_variables: {
+        target_powershare_path: {
+            cppflags: ["-DPOWERSHARE_PATH=\"%s\""],
+        },
+        target_powershare_enabled: {
+            cppflags: ["-DPOWERSHARE_ENABLED=\"%s\""],
+        },
+        target_powershare_disabled: {
+            cppflags: ["-DPOWERSHARE_DISABLED=\"%s\""],
         },
     },
 }
@@ -293,6 +430,30 @@ surfaceflinger_qcom_extensions {
         qcom_display_headers_namespace: {
             cppflags: ["-DQCOM_UM_FAMILY"],
             header_libs: ["//%s:display_intf_headers"],
+        },
+    },
+}
+
+soong_config_module_type {
+    name: "qti_vibrator_hal",
+    module_type: "cc_defaults",
+    config_namespace: "lineageQcomVars",
+    bool_variables: ["qti_vibrator_use_effect_stream"],
+    value_variables: ["qti_vibrator_effect_lib"],
+    properties: [
+        "cppflags",
+        "shared_libs",
+    ],
+}
+
+qti_vibrator_hal {
+    name: "qti_vibrator_hal_defaults",
+    soong_config_variables: {
+        qti_vibrator_use_effect_stream: {
+            cppflags: ["-DUSE_EFFECT_STREAM"],
+        },
+        qti_vibrator_effect_lib: {
+            shared_libs: ["%s"],
         },
     },
 }
