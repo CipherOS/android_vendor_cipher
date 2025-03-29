@@ -27,5 +27,8 @@
         <!-- wfcSpnFormat is "%s WiFi Calling" -->
         <int name="wfc_spn_format_idx_int" value="11"/>
 
+        <!-- Show APN Settings on CDMA Carriers -->
+       <boolean name="show_apn_setting_cdma_bool" value="true"/>
+
     </carrier_config>
 </carrier_config_list>
