@@ -3966,4 +3966,8 @@
   <apn carrier="BSNL NET" mcc="404" mnc="58" apn="bsnlnet" type="default,supl" protocol="IPV4V6" roaming_protocol="IPV4V6" />
   <apn carrier="BSNL IMS" mcc="404" mnc="58" apn="bsnlnet" type="ims" protocol="IPV4V6" roaming_protocol="IPV4V6" />
   <apn carrier="Vi India" mcc="404" mnc="78" apn="www" type="default,mms,ia,supl,ims,hipri,fota,cbs,xcap" protocol="IPV4V6" roaming_protocol="IPV4V6" />
+  <apn carrier="iot.telekom.net" mcc="901" mnc="40" apn="iot.telekom.net" type="default,supl" protocol="IPV4V6" roaming_protocol="IPV4V6" network_type_bitmask="1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|19|20" />
+  <apn carrier="19004.mcs" mcc="310" mnc="030" apn="19004.mcs" type="default,supl" protocol="IPV4V6" roaming_protocol="IPV4V6" network_type_bitmask="1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|19|20" />
+  <apn carrier="plus 4g" apn="plus" type="default,ia,mms,supl,hipri" user="plus" password="4g" protocol="IPV4V6" roaming_protocol="IPV4V6" network_type_bitmask="1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|19|20" />
+  <apn carrier="weex" mcc="334" mnc="030" apn="internet.weex.mx" type="default,mms,supl,hipri,fota,ims,cbs" protocol="IPV4V6" roaming_protocol="IPV4V6" network_type_bitmask="1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|19|20" />
 </apns>
