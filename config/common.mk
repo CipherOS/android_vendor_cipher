@@ -321,6 +321,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.cipher.build.date=$(shell LC_ALL=en_US.utf8 date "+%d_%B_%Y") \
 
 # Blur
+CIPHER_BLUR ?= true
 ifeq ($(CIPHER_BLUR), true)
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.sf.blurs_are_expensive=1 \
@@ -339,7 +340,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 -include vendor/cipher/config/partner_gms.mk
 
 # SystemUIClocks
-PRODUCT_USES_SYSTEMUICLOCKS ?= true
+PRODUCT_USES_SYSTEMUICLOCKS ?= false
 ifeq ($(PRODUCT_USES_SYSTEMUICLOCKS), true)
     $(call inherit-product, vendor/SystemUIClocks/product.mk)
 endif
