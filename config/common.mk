@@ -341,7 +341,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 
 # SystemUIClocks
-PRODUCT_USES_SYSTEMUICLOCKS ?= false
+PRODUCT_USES_SYSTEMUICLOCKS ?= true
 ifeq ($(PRODUCT_USES_SYSTEMUICLOCKS), true)
     $(call inherit-product, vendor/SystemUIClocks/product.mk)
 endif
