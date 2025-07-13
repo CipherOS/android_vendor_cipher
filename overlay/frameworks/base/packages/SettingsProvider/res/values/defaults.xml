@@ -18,6 +18,19 @@
 -->
 <resources>
 
+    <!-- Disable Wifi by Default -->
     <bool name="def_wifi_on">false</bool>
+
+    <!-- Disable BT by Default -->
     <bool name="def_bluetooth_on">false</bool>
+
+    <!-- Set default timeout to 30sec -->
+    <integer name="def_screen_off_timeout">30000</integer>
+
+    <!-- Automatic brightness by default -->
+    <bool name="def_screen_brightness_automatic_mode">true</bool>
+
+    <!-- Default for Settings.System.VIBRATE_WHEN_RINGING -->
+    <bool name="def_vibrate_when_ringing">true</bool>
+
 </resources>
