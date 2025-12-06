@@ -1,3 +1,0 @@
-name: "bp2a"
-inherits: "ap4a"
-aconfig_value_sets: "aconfig_value_set-cipher-bp2a"
