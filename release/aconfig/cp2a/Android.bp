@@ -14,8 +14,8 @@
 // limitations under the License.
 
 aconfig_value_set {
-    name: "aconfig_value_set-cipher-bp4a",
-    values: [
-        "aconfig-values-bp4a-com.android.systemui-all",
+    name: "aconfig_value_set-cipher-bp2a",
+    srcs: [
+        "*/Android.bp",
     ],
 }
