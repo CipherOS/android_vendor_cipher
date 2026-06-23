@@ -352,5 +352,9 @@ PRODUCT_PRODUCT_PROPERTIES += \
     is_expressive_design_enabled=true
 endif
 
+# Enable background blur for widget picker
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    ro.launcher.depth.widget=true
+
 # Inherit vendor/cipher-extras if exists
 $(call inherit-product-if-exists, vendor/cipher-extra/cipher.mk)
