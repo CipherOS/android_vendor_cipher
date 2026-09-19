@@ -229,7 +229,10 @@
     
     <!-- Flag indicating which package name can access DeviceConfig table -->
     <string name="config_deviceConfiguratorPackageName" translatable="false">org.protonaosp.deviceconfig</string>
-    
+     
+    <!-- Indicating if keyboard vibration settings supported or not. -->
+    <bool name="config_keyboardVibrationSettingsSupported">true</bool>
+
     <!-- Name of a font family to use for body text. -->
     <string name="config_bodyFontFamily">rmsans</string>
     <string name="config_bodyFontFamilyMedium">rmsans-medium</string>
