@@ -100,6 +100,29 @@ PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := everything
 PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 USE_DEX2OAT_DEBUG := false
+PRODUCT_OTHER_JAVA_DEBUG_INFO := false
+
+# Dex
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    pm.dexopt.install=speed-profile \
+    pm.dexopt.install-bulk=speed-profile \
+    pm.dexopt.bg-dexopt=speed-profile \
+    pm.dexopt.ab-ota=speed-profile \
+    pm.dexopt.shared=quicken \
+    pm.dexopt.first-boot=verify \
+    pm.dexopt.boot-after-ota=verify \
+    pm.dexopt.boot-after-mainline-update=verify \
+    pm.dexopt.inactive=verify \
+    dalvik.vm.usap_pool_enabled=true \
+    dalvik.vm.madvise.artfile.size=104857600
+
+# set threshold to filter unused apps
+PRODUCT_SYSTEM_PROPERTIES += \
+  pm.dexopt.downgrade_after_inactive_days=10
+
+# Do not generate libartd.
+PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 
 # Strip the local variable table and the local variable type table to reduce
 # the size of the system image. This has no bearing on stack traces, but will
