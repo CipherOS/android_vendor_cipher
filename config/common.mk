@@ -237,6 +237,13 @@ PRODUCT_PACKAGES += \
 endif
 endif
 
+# Multiuser
+PRODUCT_PACKAGES += \
+    Multiuser
+
+PRODUCT_COPY_FILES += \
+    vendor/cipher/config/permissions/whitelist_com.android.multiuser.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/whitelist_com.android.multiuser.xml
+
 # SetupWizard
 PRODUCT_PRODUCT_PROPERTIES += \
     setupwizard.theme=glif_v4 \
